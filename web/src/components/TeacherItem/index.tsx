@@ -1,34 +1,55 @@
 import React from 'react';
 
+import api from '../../services/api';
+
 import './styles.css'
 
 import whatsappIcon from '../../assets/icons/whatsapp.svg'
 
-function TeacherItem() {
+export interface Teacher {
+    avatar: string,
+    bio: string,
+    cost: number,
+    id: number,
+    name: string,
+    subject: string,
+    whatsapp: number
+}
+interface TeacherItemProps {
+    teacher: Teacher;
+}
+
+const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
+    function createNewConnection() {
+        api.post('connections', {
+            user_id: teacher.id
+        })
+    }
+
     return (
         <article className="teacher-item">
             <header>
-                <img src="https://avatars2.githubusercontent.com/u/31541321?s=460&u=9ed794fbd85ae1e136fdd3910ec0eee70911a7cb&v=4" alt="Jennifer Takagi" />
+                <img src={ teacher.avatar } alt="Jennifer Takagi" />
                 <div>
-                    <strong>Jennifer Takagi</strong>
-                    <span>Química</span>
+                    <strong>{ teacher.name }</strong>
+                    <span>{ teacher.subject }</span>
                 </div>
             </header>
-            <p>
-                Entusiasta das melhores tecnologias de quimica avançada.
-                <br /><br />
-                Apiaxonada por explodir coisas em laboratórios e por mudar a vida
-                das pessoas atraves de experiencias!
-            </p>
+            <p>{ teacher.bio }</p>
             <footer>
                 <p>
                     Preço/Hora
-                    <strong>R$ 90,00</strong>
+                    <strong>R$ { teacher.cost }</strong>
                 </p>
-                <button type="button">
+                <a 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={`https://wa.me/${teacher.whatsapp}`}
+                    onClick={ createNewConnection }
+                >
                     <img src={ whatsappIcon } alt="Whatsapp icon" />
                     Get in touch
-                </button>
+                </a>
             </footer>
         </article>
     );
