@@ -8,21 +8,23 @@ import backIcon from '../../assets/icons/back.svg'
 
 interface PageHeaderProps {
     title: string;
+    description?: string;
 }
 
-const PageHeader: React.FC<PageHeaderProps> = (props) => {
+const PageHeader: React.FC<PageHeaderProps> = ({ title, description, children }) => {
     return (
         <header className="page-header">
             <div className="top-bar-container">
                 <Link to="/">
-                    <img src={backIcon} alt="Back" />
+                    <img src={ backIcon } alt="Back" />
                 </Link>
-                <img src={logoImage} alt="Proffy logo" />
+                <img src={ logoImage } alt="Proffy logo" />
             </div>
 
             <div className="header-content">
-                <strong>{props.title}</strong>
-                {props.children}
+                <strong>{ title }</strong>
+                { description && <p>{ description }</p> }
+                { children }
             </div>
            
         </header>
