@@ -3,6 +3,8 @@ import { View, Image, Text, Linking } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler'
 import AsyncStorage from '@react-native-community/async-storage';
 
+import api from '../../services/api';
+
 import styles from './styles';
 
 import heartOutlineIcon from '../../assets/images/icons/heart-outline.png';
@@ -28,6 +30,10 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher, setAsFavorite }) => 
     const [isFavorite, setIsFavorite] = useState(setAsFavorite);
 
     function handleLinkToWhatsapp() {
+        api.post('connections', {
+            user_id: teacher.id
+        })
+        
         Linking.openURL(`whatsapp://send?phone=${teacher.whatsapp}`);
     }
 
@@ -72,7 +78,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher, setAsFavorite }) => 
 
                 <View style={ styles.footer }>
                     <Text style={ styles.price }>
-                        Preço/Hora {'   '}
+                        Price/Hour {'   '}
                         <Text style={ styles.priceValue }>R$ { teacher.cost }</Text>
                     </Text>
 
