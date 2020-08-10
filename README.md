@@ -29,7 +29,10 @@
 
 # :rocket: Features
 
-* Connect with Professors.
+* Register user as a teacher.
+* Connect with teachers by whatsapp.
+* Mobile app with favorite functionality.
+* Connection with SQLite database.
 
 # :framed_picture: UI Documentation
 This project has a UI Documentation of reusable components, allowing to test them individually.
@@ -48,6 +51,10 @@ SSH URLs provide access to a Git repository via SSH, a secure protocol. If you h
 
 ```git clone git@github.com:jennifertakagi/proffy-app.git```
 
+**Enter in the project (web, mobile or server)**
+
+```cd web|mobile|server```
+
 **Install dependencies**
 
 ```npm install```
@@ -62,7 +69,7 @@ Run the following command in order to start the application in a development env
 
 **Question:** What are the tecnologies used in this project?
 
-**Answer:** The tecnologies used in this project are [React JS](https://reactjs.org/docs/getting-started.html).
+**Answer:** The tecnologies used in this project are [React JS](https://reactjs.org/docs/getting-started.html) + [React Native](https://reactnative.dev/) + [SQLite](https://www.sqlite.org/index.html).
 
 # :bug: Issues
 
