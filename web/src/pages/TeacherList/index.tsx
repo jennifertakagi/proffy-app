@@ -27,9 +27,7 @@ function TeacherList() {
             }
         }).then((response) => {
             setTeachers(response.data)
-        }).catch(() => {
-
-        })
+        });
     }
 
     return (
